@@ -1,6 +1,7 @@
-word = "Электричество"
+import random
 
-def hangman (word):
+def hangman ():
+    words = ["Электричество","Стол","Чайник","Машина","Дом","Ковёр","Аптека"]
     wrong = 0
     stages = ["",
               "_________      ",
@@ -12,7 +13,8 @@ def hangman (word):
               "|              ",
               "|              ",
               ]
-
+    number = random.randirt(0,6)
+    word = words[number]
     rletters = list (word)
     board = ["__"] * len (word)
     win = False
@@ -26,11 +28,10 @@ def hangman (word):
 
         if char in rletters:
             cind = rletters.index(char)
-            rletters [cind] = '$'
-
             board[cind] = char
-            print("\n")
-            print((" ".join (board)))
+            rletters [cind] = '$'
+            print("\n"," ".join(board),"\n","\n","Буква угадана верно, продолжаем :)")
+            
         else:
             wrong += 1
             print((" ".join (board)))
@@ -48,4 +49,4 @@ def hangman (word):
         print ("Вы проиграли! Было загадано слово: {}.".format (word))
                 
 
-hangman (word)
+hangman ()
